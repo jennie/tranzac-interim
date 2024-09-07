@@ -3,23 +3,145 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TRANZAC - Interim Site</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>TRANZAC - Interim Page</title>
+    <link href="./dist/styles.css" rel="stylesheet" />
   </head>
-  <body>
-    <header>
-      <h1>TRANZAC</h1>
-      <p>Toronto Australia New Zealand Club</p>
+  <body class="overflow-x-hidden">
+    <header class="overflow-x-hidden">
+      <div
+        id="blob"
+        class="absolute -top-28 -left-48 w-full overflow-hidden -z-10 rotate-45">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 2000">
+          <path
+            style="fill: #0e0e10"
+            d="M1891 560c0-277-224-509-501-499-372 13-397 281-504 302s-215-179-511-75a459 459 0 0 0-222 218C10 809 262 886 259 992s-201 171-82 395c34 64 99 127 212 141 56 6 103 47 115 102a377 377 0 0 0 383 310c222 2 528-202 380-536-42-97 30-123 73-194s-11-120 128-156c233-61 423-246 423-494Z"></path>
+        </svg>
+      </div>
+      <img
+        src="./images/logo.png"
+        alt="TRANZAC Logo"
+        class="w-full md:w-96 h-auto mx-auto mb-4 z-10" />
+      <h1 class="hidden">TRANZAC</h1>
+      <div class="text-center text-stone-400">
+        <p>292 Brunswick Ave<br />Toronto, ON<br />M5S 2M7</p>
+        <p>416-923-8137</p>
+      </div>
     </header>
 
-    <main>
-      <!-- Add your sections here -->
+    <main class="mx-auto w-full">
+      <section id="intro" class="bg-transparent text-center">
+        <p class="text-2xl">
+          Our new website is coming soon! In the meantime, please find important
+          information below.
+        </p>
+      </section>
+
+      <section id="rental">
+        <h2>Rental Forms</h2>
+        <p>Interested in renting our spaces?</p>
+        <div class="mt-3 space-x-6">
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLScQoTTBTL31vnuWYnHFnssqPGYkC9L93pLVYUWAM9vg9OSKDA/viewform"
+            target="_blank"
+            class="cta-button"
+            >Living Room Rental Form</a
+          >
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSejzDIN8G-QduvkVIwtLjmIt3NkuB-UYKnt5b35mIML8dN0eg/viewform"
+            class="cta-button"
+            >Main Hall Rental Form</a
+          >
+        </div>
+      </section>
+
+      <section id="membership">
+        <h2>Become a Member</h2>
+        <p>Join our one-year membership program for $50:</p>
+        <div class="w-1/2 space-y-6 mt-6 mx-auto">
+          <div class="">
+            <div id="paypal-button-container" class=""></div>
+          </div>
+          <div class="text-center text-stone-400">– OR – </div>
+          <div class="">
+            <img
+              src="/images/Interac_e-Transfer_logo.png"
+              class="mx-auto w-40" />
+            <p class="text-stone-200 mt-2 text-xl text-center">
+              Send to ed@tranzac.org
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="key-dates">
+        <h2>Calendar</h2>
+        <ul>
+          <li>AGM: October 8, 2024</li>
+          <li><i>[Other upcoming events here]</i></li>
+        </ul>
+      </section>
+
+      <section id="contact">
+        <h2>Contact Us</h2>
+        <p>
+          For inquiries, especially regarding rental requests, please contact:
+        </p>
+        <p>[which email?]</p>
+      </section>
     </main>
 
     <footer>
       <p>&copy; 2024 TRANZAC. All rights reserved.</p>
+      <p>A new, fully-featured website is under development. Stay tuned!</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AahOtH1hRqEr2ojd7pBW74zCVaz8NYD1s3iBn93kv2_uLQ05HBQV9I7jsPK-BnJFNeYCfLR9BM6DHWle&currency=CAD"></script>
+    <script>
+      paypal
+        .Buttons({
+          // Customize button (optional)
+          style: {
+            layout: "vertical",
+            color: "gold",
+            shape: "rect",
+            label: "paypal",
+          },
+
+          // Set up the transaction
+          createOrder: function (data, actions) {
+            return actions.order.create({
+              purchase_units: [
+                {
+                  amount: {
+                    value: "50.00", // Change this to your membership fee
+                  },
+                },
+              ],
+            });
+          },
+
+          // Finalize the transaction
+          onApprove: function (data, actions) {
+            return actions.order.capture().then(function (orderData) {
+              // Successful capture! For demo purposes:
+              console.log(
+                "Capture result",
+                orderData,
+                JSON.stringify(orderData, null, 2)
+              );
+              var transaction =
+                orderData.purchase_units[0].payments.captures[0];
+              alert(
+                "Transaction " +
+                  transaction.status +
+                  ": " +
+                  transaction.id +
+                  "\n\nSee console for all available details"
+              );
+            });
+          },
+        })
+        .render("#paypal-button-container");
+    </script>
   </body>
 </html>

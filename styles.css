@@ -1,9 +1,61 @@
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  color: #333;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+@import url("https://fonts.googleapis.com/css2?family=DM Sans:wght@400;500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  body {
+    @apply font-dm-sans leading-relaxed text-black-haze bg-eerie-black max-w-3xl mx-auto p-5;
+  }
+
+  header {
+    @apply text-center mb-2 p-5;
+  }
+
+  h1 {
+    @apply text-5xl mb-0 text-orange-soda;
+  }
+
+  header p {
+    @apply text-xl;
+  }
+
+  h2 {
+    @apply text-orange-soda border-b-2 border-orange-soda pb-1 inline-block mb-6 uppercase font-bold text-2xl;
+  }
+
+  .cta-button {
+    @apply inline-block bg-orange-soda opacity-80 text-white py-2 px-5 no-underline rounded-full mt-2 font-bold transition-all duration-300 ease-in-out;
+  }
+
+  .cta-button:hover {
+    @apply bg-orange-soda opacity-100 -translate-y-0.5 shadow-lg;
+  }
+
+  section {
+    @apply bg-black-haze bg-opacity-5 p-8 mb-8 rounded-2xl;
+  }
+
+  ul {
+    @apply list-none pl-0;
+  }
+
+  li {
+    @apply mb-2;
+  }
+
+  footer {
+    @apply text-center my-10 pt-5 border-t border-stone-400 text-stone-400;
+  }
+
+  @media (max-width: 600px) {
+    body {
+      @apply p-2;
+    }
+
+    .cta-button {
+      @apply block text-center;
+    }
+  }
 }
-/* Add more styles as needed */

@@ -1,0 +1,18 @@
+{
+  "name": "tranzac-interim-site",
+  "version": "1.0.0",
+  "description": "Interim website for TRANZAC",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify",
+    "dev": "tailwindcss -i ./styles.css -o ./dist/styles.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2"
+  }
+}
