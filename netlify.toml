@@ -10,3 +10,6 @@
   command = "npx tailwindcss -i ./styles.css -o ./dist/styles.css --watch"
   port = 8888
   publish = "."
+
+[context.production.environment]
+  DATO_TOKEN = "${DATO_TOKEN}"

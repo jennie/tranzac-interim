@@ -1,6 +1,6 @@
-const API_TOKEN = window.API_TOKEN;
-
+const API_TOKEN = process.env.DATO_TOKEN;
 const API_URL = "https://graphql.datocms.com/";
+
 let allEvents = [];
 let currentlyDisplayedEvents = 0;
 const eventsPerLoad = 5;

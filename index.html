@@ -3,9 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tranzac Club – Toronto Australia New Zealand Club</title>
+    <title>Tranzac</title>
     <link href="./dist/styles.css" rel="stylesheet" />
-    <!-- SEO Meta Tags -->
     <meta
       name="description"
       content="TRANZAC is Toronto's hub for live music. Join us for events, rent our spaces, or become a member. New website coming soon!" />
@@ -18,16 +17,21 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.tranzac.org/" />
-    <meta
-      property="og:title"
-      content="TRANZAC - Toronto Australia New Zealand Club" />
+    <meta property="og:title" content="TRANZAC" />
     <meta
       property="og:description"
-      content="TRANZAC is Toronto's hub for Australian and New Zealand culture. Join us for events, rent our spaces, or become a member." />
+      content="TRANZAC is Toronto's hub for live music. Join us for events, rent our spaces, or become a member." />
   </head>
   <body class="overflow-x-hidden">
     <script>
-      window.API_TOKEN = "{{ DATO_TOKEN }}";
+      fetch("/.netlify/functions/env")
+        .then((response) => response.json())
+        .then((data) => {
+          window.API_TOKEN = data.DATO_TOKEN;
+        })
+        .catch((error) =>
+          console.error("Error fetching environment variables", error)
+        );
     </script>
 
     <header class="overflow-x-hidden">
