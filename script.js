@@ -1,4 +1,5 @@
-const API_TOKEN = window.DATO_TOKEN;
+const API_TOKEN = "d926a683ddc732a876f5e698ae6f70";
+
 console.log("API_TOKEN:", API_TOKEN);
 const API_URL = "https://graphql.datocms.com/";
 
