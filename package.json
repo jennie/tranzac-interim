@@ -3,16 +3,23 @@
   "version": "1.0.0",
   "description": "Interim website for TRANZAC",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "build": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify",
-    "dev": "tailwindcss -i ./styles.css -o ./dist/styles.css --watch"
+    "dev:css": "tailwindcss -i ./styles.css -o ./dist/styles.css --watch",
+    "dev:serve": "http-server -c-1",
+    "dev": "npm run dev:css & npm run dev:serve"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^10.4.14",
+    "http-server": "^14.1.1",
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
   }
 }

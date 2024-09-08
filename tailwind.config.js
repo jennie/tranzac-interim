@@ -1,5 +1,17 @@
 module.exports = {
-  content: ["./**/*.html"],
+  content: [
+    "./index.html",
+    "./script.js",
+    {
+      raw: String(
+        (() => {
+          const script = require("fs").readFileSync("./script.js", "utf8");
+          const classes = script.match(/class="([^"]+)"/g);
+          return classes ? classes.join(" ") : "";
+        })()
+      ),
+    },
+  ],
   theme: {
     extend: {
       colors: {
@@ -14,5 +26,24 @@ module.exports = {
       },
     },
   },
+  safelist: [
+    "mb-8",
+    "p-4",
+    "border",
+    "border-gray-200",
+    "rounded-lg",
+    "shadow-sm",
+    "bg-white",
+    "text-lg",
+    "uppercase",
+    "font-bold",
+    "mb-2",
+    "text-gray-800",
+    "text-sm",
+    "text-gray-600",
+    "mt-2",
+    "prose",
+    "prose-sm",
+  ],
   plugins: [],
 };

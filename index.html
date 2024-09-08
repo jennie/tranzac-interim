@@ -26,6 +26,10 @@
       content="TRANZAC is Toronto's hub for Australian and New Zealand culture. Join us for events, rent our spaces, or become a member." />
   </head>
   <body class="overflow-x-hidden">
+    <script>
+      window.API_TOKEN = "{{ DATO_TOKEN }}";
+    </script>
+
     <header class="overflow-x-hidden">
       <div
         id="blob"
@@ -72,7 +76,10 @@
           >
         </div>
       </section>
-
+      <section id="agm" class="text-center text-2xl">
+        <h2>Save the Date</h2>
+        <p>Annual General Meeting: October 8, 2024</p>
+      </section>
       <section id="membership">
         <h2>Become a Member</h2>
         <p>Join our one-year membership program for $50:</p>
@@ -84,7 +91,8 @@
           <div class="">
             <img
               src="/images/Interac_e-Transfer_logo.png"
-              class="mx-auto w-40" />
+              class="mx-auto w-40"
+              alt="Interac e-Transfer logo" />
             <p class="text-stone-200 mt-2 text-xl text-center">
               Send to ed@tranzac.org
             </p>
@@ -94,10 +102,8 @@
 
       <section id="key-dates">
         <h2>Calendar</h2>
-        <ul>
-          <li>AGM: October 8, 2024</li>
-          <li><i>[Other upcoming events here]</i></li>
-        </ul>
+
+        <div id="events-container"></div>
       </section>
 
       <section id="contact">
@@ -126,13 +132,12 @@
             label: "paypal",
           },
 
-          // Set up the transaction
           createOrder: function (data, actions) {
             return actions.order.create({
               purchase_units: [
                 {
                   amount: {
-                    value: "50.00", // Change this to your membership fee
+                    value: "50.00",
                   },
                 },
               ],
@@ -162,5 +167,6 @@
         })
         .render("#paypal-button-container");
     </script>
+    <script src="script.js"></script>
   </body>
 </html>
